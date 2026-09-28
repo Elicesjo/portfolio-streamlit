@@ -12,6 +12,7 @@ def _img_b64(filename: str) -> str:
         return base64.b64encode(p.read_bytes()).decode()
     return ""
 
+
 st.set_page_config(
     page_title="Josy Elices-Diez · Data Analyst",
     layout="wide",
@@ -315,8 +316,8 @@ PROJECTS = [
         "image": "projet_09.png",
     },
     {
-        "title": "Accès à l'eau potable — Analyse géopolitique dans 180 pays",
-        "description": "Analyser l'accès à l'eau potable et les facteurs de mortalité liés dans 180+ pays via un dashboard Tableau interactif.",
+        "title": "Accès à l'eau potable — Analyse géopolitique dans 194 pays",
+        "description": "Analyser l'accès à l'eau potable et les facteurs de mortalité liés dans 194 pays via un dashboard Tableau interactif.",
         "categories": ["Tableau", "Dashboard", "Python", "Analyse de données"],
         "tools": "Tableau · Python · Pandas · Jupyter",
         "url": "https://github.com/Elicesjo/PROJET-9-",
@@ -338,6 +339,14 @@ PROJECTS = [
         "url": "https://github.com/Elicesjo/PROJET-11-",
         "image": "projet_faux_billets.png",
     },
+    {
+        "title": "Détection d'anomalies de prix — Isolation Forest vs contrôle univarié",
+        "description": "Comparer un contrôle statistique univarié (Z-score, Tukey) à des méthodes ML multivariées (Isolation Forest, LOF) pour révéler les anomalies de prix contextuelles qu'un seuil simple ne voit pas.",
+        "categories": ["Python", "Machine Learning", "Détection d'anomalies"],
+        "tools": "Python · Pandas · Scikit-learn · Matplotlib · Jupyter",
+        "url": "https://github.com/Elicesjo/PROJET-12-",
+        "image": "projet_anomalies.png",
+    },
 ]
 
 for _p in PROJECTS:
@@ -345,26 +354,56 @@ for _p in PROJECTS:
 
 SKILLS = {
     "Langages & outils": [
-        "Python", "SQL", "dbt", "Power BI", "Tableau",
-        "Excel", "Git", "Jupyter", "Quarto",
+        "Python",
+        "SQL",
+        "dbt",
+        "Power BI",
+        "Tableau",
+        "Excel",
+        "Git",
+        "Jupyter",
+        "Quarto",
     ],
     "Bases de données & modélisation": [
-        "PostgreSQL", "MySQL", "SQLite", "DBeaver", "pgAdmin",
-        "Modélisation relationnelle", "Schéma en étoile", "ETL", "Data warehouse",
+        "PostgreSQL",
+        "MySQL",
+        "SQLite",
+        "DBeaver",
+        "pgAdmin",
+        "Modélisation relationnelle",
+        "Schéma en étoile",
+        "ETL",
+        "Data warehouse",
     ],
     "Méthodes analytiques": [
-        "Segmentation RFM", "ACP", "Clustering", "Tests statistiques",
-        "Analyse exploratoire", "Visualisation", "Régression",
-        "Analyse de cohortes", "A/B testing",
+        "Segmentation RFM",
+        "ACP",
+        "Clustering",
+        "Tests statistiques",
+        "Analyse exploratoire",
+        "Visualisation",
+        "Régression",
+        "Analyse de cohortes",
+        "A/B testing",
     ],
     "Expertise métier — Retail": [
-        "Pilotage KPIs", "Analyse des ventes", "Reporting opérationnel",
-        "Management d'équipes", "Stratégie commerciale", "Gestion P&L",
-        "Formation équipes", "Retail analytics", "Analyse marché",
+        "Pilotage KPIs",
+        "Analyse des ventes",
+        "Reporting opérationnel",
+        "Management d'équipes",
+        "Stratégie commerciale",
+        "Gestion P&L",
+        "Formation équipes",
+        "Retail analytics",
+        "Analyse marché",
     ],
     "AI & Automatisation": [
-        "OpenAI API", "Prompt engineering", "Analytics automatisée",
-        "Automatisation rapports", "LLM", "No-code AI",
+        "OpenAI API",
+        "Prompt engineering",
+        "Analytics automatisée",
+        "Automatisation rapports",
+        "LLM",
+        "No-code AI",
     ],
     "Langues": ["Français — natif", "Anglais — C1", "Espagnol — A2"],
 }
@@ -377,7 +416,8 @@ def tags_html(items, css_class):
 
 
 def page_home():
-    st.markdown("""
+    st.markdown(
+        """
     <div class="hero-card">
         <p class="hero-name">Josy Elices-Diez</p>
         <p class="hero-title">Data Analyst · Analytics & Automatisation IA</p>
@@ -393,28 +433,39 @@ def page_home():
         <a class="hero-link" href="https://github.com/Elicesjo" target="_blank">GitHub</a>
         <a class="hero-link hero-link-cv" href="app/static/cv_josy.pdf" target="_blank">↓ CV</a>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     st.markdown('<div style="height:1.5rem"></div>', unsafe_allow_html=True)
-    st.markdown('<p class="section-title">Compétences</p><div class="section-bar"></div>', unsafe_allow_html=True)
+    st.markdown(
+        '<p class="section-title">Compétences</p><div class="section-bar"></div>',
+        unsafe_allow_html=True,
+    )
 
     skill_items = list(SKILLS.items())
     col1, col2 = st.columns(2, gap="medium")
     for i, (group, skills) in enumerate(skill_items):
         col = col1 if i % 2 == 0 else col2
         with col:
-            st.markdown(f"""
+            st.markdown(
+                f"""
             <div class="skill-card">
                 <h4>{group}</h4>
                 <div class="skill-tags-grid">{tags_html(skills, "skill-tag")}</div>
             </div>
-            """, unsafe_allow_html=True)
+            """,
+                unsafe_allow_html=True,
+            )
 
 
 def page_projets():
-    st.markdown('<p class="section-title">Projets Data</p><div class="section-bar"></div>', unsafe_allow_html=True)
     st.markdown(
-        "10 projets issus de la formation **Data Analyst d'OpenClassrooms × ENSAE** "
+        '<p class="section-title">Projets Data</p><div class="section-bar"></div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        "11 projets issus de la formation **Data Analyst d'OpenClassrooms × ENSAE** "
         "— analyse de données, modélisation SQL, pipelines dbt et dashboards.",
     )
 
@@ -425,7 +476,8 @@ def page_projets():
     )
 
     filtered = [
-        p for p in PROJECTS
+        p
+        for p in PROJECTS
         if selected == "Toutes les catégories" or selected in p["categories"]
     ]
 
@@ -442,7 +494,8 @@ def page_projets():
                     if project["_b64"]
                     else ""
                 )
-                st.markdown(f"""
+                st.markdown(
+                    f"""
                 <div class="project-card">
                     {img_tag}
                     <div class="project-body">
@@ -453,7 +506,9 @@ def page_projets():
                         <a class="gh-link" href="{project["url"]}" target="_blank">Voir sur GitHub →</a>
                     </div>
                 </div>
-                """, unsafe_allow_html=True)
+                """,
+                    unsafe_allow_html=True,
+                )
         st.markdown('<div style="height:1rem"></div>', unsafe_allow_html=True)
 
 
@@ -464,18 +519,22 @@ st.markdown(CSS, unsafe_allow_html=True)
 with st.sidebar:
     _photo_tag = (
         f'<div class="sb-photo-wrap"><img class="sb-photo" src="data:image/jpeg;base64,{_photo_b64}" alt=""></div>'
-        if _photo_b64 else ""
+        if _photo_b64
+        else ""
     )
     st.markdown(f"{_photo_tag}", unsafe_allow_html=True)
     st.markdown("---")
-    st.markdown("""
+    st.markdown(
+        """
 <p class="sb-label">Contact</p>
 <p class="sb-value">+33 6 87 15 14 41</p>
 <p class="sb-value">josy.elices@gmail.com</p>
 <div style="height:0.9rem"></div>
 <p class="sb-label">Localisation</p>
 <p class="sb-value">Paris, France</p>
-""", unsafe_allow_html=True)
+""",
+        unsafe_allow_html=True,
+    )
 
 tab1, tab2 = st.tabs(["Présentation", "Projets Data"])
 with tab1:
